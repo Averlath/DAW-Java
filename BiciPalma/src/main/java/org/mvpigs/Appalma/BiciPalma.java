@@ -14,7 +14,7 @@ public class BiciPalma {
 		System.out.println("\n **** caso TEST anclar bicicleta(s) **** \n");
 		int[] bicicletas = {291, 292, 293, 294};
 
-		for ( int id: bicicletas ){
+		for (int id : bicicletas) {
 			Bicicleta bicicleta = new Bicicleta(id);
 			estacion.anclarBicicleta(bicicleta);
 		}
