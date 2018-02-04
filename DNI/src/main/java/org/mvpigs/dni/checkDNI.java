@@ -1,12 +1,11 @@
 package org.mvpigs.dni;
 
-public class check {
+public class checkDNI {
     private String DNI;
     private char letter;
-    private char[] letters = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J',
-                            'Z','S','Q','V','H','L','C','K', 'E'};
+    private static char[] letters=TablaDNI.getTabla();
     
-    public check(String DNI) {
+    public checkDNI(String DNI) {
         this.DNI = DNI;
         calculateLetter(DNI);
     }
@@ -22,25 +21,37 @@ public class check {
     public void setDNI(String DNI) {
         this.DNI = DNI;
     }
-
     private void calculateLetter(String DNI) {
-        if (isNumeric(DNI)) {
+        if (numeroValido()) {
             int number = Integer.parseInt(DNI);
             this.letter = letters[calculateRemaining(number)];
+            System.out.println("La letra del DNI es: " + Character.toString(this.letter) + ".");
         } else {
             System.out.println("El formato del DNI no es correcto.");
         }
     }
-
-    private int calculateRemaining(int sum) {
-        return sum%(letters.length);
+    private int calculateRemaining(int numeroDNI) {
+        return numeroDNI%(letters.length);
     }
-
-    public static boolean isNumeric(String character) {
+    public boolean isNumeric() {
         try {
-            Integer.parseInt(character);
+            Integer.parseInt(this.DNI);
             return true;
         } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+    public boolean esLengthCorrecta() {
+        if (this.DNI.length() == 8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean numeroValido() {
+        if (isNumeric() && esLengthCorrecta()) {
+            return true;
+        } else {
             return false;
         }
     }
