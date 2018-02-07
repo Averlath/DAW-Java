@@ -2,11 +2,14 @@ package org.mvpigs.Estacion;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.mvpigs.Bicicleta.Bicicleta;
+import org.mvpigs.TarjetaUsuario.TarjetaUsuario;
+
 public class Estacion {
     private int id;
     private String direccion;
     private int numeroAnclajes;
-    private org.mvpigs.Bicicleta.Bicicleta[] anclajes;
+    private Bicicleta[] anclajes;
 
     public Estacion(int id, String direccion, int anclajes) {
         this.id = id;
@@ -35,7 +38,7 @@ public class Estacion {
  
     public int anclajesLibres() {
         int anclajesLibres = 0;
-        for (org.mvpigs.Bicicleta.Bicicleta anclaje : this.anclajes) {
+        for (Bicicleta anclaje : this.anclajes) {
             if (anclaje == null) {
                 anclajesLibres++;
             }
@@ -47,7 +50,7 @@ public class Estacion {
         int posicion = 0;
         int numeroAnclaje = 0;
 
-        for (org.mvpigs.Bicicleta.Bicicleta bicicleta : this.anclajes) {
+        for (Bicicleta bicicleta : this.anclajes) {
             numeroAnclaje = posicion + 1;
             if (bicicleta != null) {
                 System.out.println("Anclaje " + numeroAnclaje + " " + this.anclajes[posicion].getId());
@@ -58,11 +61,11 @@ public class Estacion {
         }
     }
 
-    public void mostrarAnclaje(org.mvpigs.Bicicleta.Bicicleta bicicleta, int numeroAnclaje) {
+    public void mostrarAnclaje(Bicicleta bicicleta, int numeroAnclaje) {
         System.out.println("bicicleta: " + bicicleta.getId() + "anclada en el anclaje: " + numeroAnclaje);
     }
 
-    public void anclarBicicleta(org.mvpigs.Bicicleta.Bicicleta bicicleta) {
+    public void anclarBicicleta(Bicicleta bicicleta) {
         int posicion = 0;
         int numeroAnclaje = posicion + 1;
         
@@ -74,7 +77,7 @@ public class Estacion {
         }
     }
     
-    public boolean leerTarjetaUsuario(org.mvpigs.TarjetaUsuario.TarjetaUsuario tarjetaUsuario) {
+    public boolean leerTarjetaUsuario(TarjetaUsuario tarjetaUsuario) {
         return tarjetaUsuario.getActivada();
     }
 
@@ -83,11 +86,11 @@ public class Estacion {
         return numeroEntero;
     }
 
-    public void mostrarBicicleta(org.mvpigs.Bicicleta.Bicicleta bicicleta, int numeroAnclaje) {
+    public void mostrarBicicleta(Bicicleta bicicleta, int numeroAnclaje) {
         System.out.println("bicicleta retirada: " + bicicleta.getId() + " de anclaje: " + numeroAnclaje);
     }
 
-    public void retirarBicicleta(org.mvpigs.TarjetaUsuario.TarjetaUsuario tarjetaUsuario) {
+    public void retirarBicicleta(TarjetaUsuario tarjetaUsuario) {
         if (leerTarjetaUsuario(tarjetaUsuario)) {
             boolean biciRetirada = false;
             while (!biciRetirada) {
