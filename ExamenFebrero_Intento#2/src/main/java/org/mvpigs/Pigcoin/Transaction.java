@@ -11,6 +11,8 @@ public class Transaction {
     private String message = null; // mensaje que acompaña a la transacción
     private byte[] signature = null; // el mensaje message firmado con la clave privada del usuario
 
+
+    //Constructor
     public Transaction() {
     }
 
@@ -23,6 +25,7 @@ public class Transaction {
         this.message = message;
     }
 
+    //Metodos
     public String toString() {
         String transactions = "\nhash = " + hash + "\nprev_hash = " + prev_hash + "\nnKey_sender = " + pKey_sender.hashCode() + "\nnKey_recipient = " + pKey_recipient.hashCode() + "\npigcoins = " + pigcoins + "\nmessage = " + message;
         return transactions;
