@@ -31,16 +31,32 @@ public class Wallet {
         this.address = address;
     }
 
-    public void setSK(PrivateKey sKey) {
-        this.sKey = sKey;
-    }
-
     public PublicKey getAddress() {
         return address;
     }
 
+    public void setSK(PrivateKey sKey) {
+        this.sKey = sKey;
+    }
+
     public PrivateKey getSKey() {
         return sKey;
+    }
+
+    public void setTotal_input(double total_input) {
+        this.total_input = total_input;
+    }
+
+    public double getTotal_output(){
+        return this.total_output;
+    }
+
+    public void setTotal_output(double total_output) {
+        this.total_output = total_output;
+    }
+
+    public double getTotal_input(){
+        return this.total_input;
     }
 
     public String toString() {
