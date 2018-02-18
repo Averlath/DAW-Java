@@ -74,12 +74,12 @@ public class Wallet {
         return wallets;
     }
 
-    public ArrayList<Transaction> getInputTransaction() {
-        return this.inputTransactions;
+    public ArrayList<Transaction> getInputTransactions() {
+        return inputTransactions;
     }
 
-    public ArrayList<Transaction> getOutputTransaction() {
-        return this.outputTransactions;
+    public ArrayList<Transaction> getOutputTransactions() {
+        return outputTransactions;
     }
 
     public void Xactions(int sender, int recipient, double coins) {
@@ -95,5 +95,40 @@ public class Wallet {
         for (Transaction transaction : blockChain.getBlockChain()) {
             Xactions(transaction.getpKey_sender().hashCode(), transaction.getpKey_recipient().hashCode(), transaction.getPigcoins());
         }
+    }
+
+    public void loadInputTransactions(BlockChain blockChain){
+        setTotal_input(0);
+
+        for (Transaction transaction : blockChain.getBlockChain()) {
+            if (getAddress() == transaction.getpKey_recipient()) {
+                inputTransactions.add(transaction);
+                total_input+=transaction.getPigcoins();
+
+            }
+        }
+        setBalance(getTotal_input()-getTotal_output());
+    }
+
+    public void loadOutputTransactions(BlockChain blockChain){
+        setTotal_output(0);
+        for (Transaction transaction : blockChain.getBlockChain()) {
+            if (getAddress() == transaction .getpKey_sender()) {
+                outputTransactions.add(transaction );
+                setTotal_output(transaction .getPigcoins());
+            }
+        }
+        setBalance(getTotal_input()-getTotal_output());
+    }
+
+    public Map collectCoins(double pigcoins){
+        Map<String, Double> usedCoins = new HashMap<String, Double>();
+        for (Transaction transaction : outputTransactions) {
+            usedCoins.put(transaction.getHash(), transaction.getPigcoins());
+        }
+        for (Transaction transaction: inputTransactions) {
+            usedCoins.put(transaction.getHash(), transaction.getPigcoins());
+        }
+        return usedCoins;
     }
 }
