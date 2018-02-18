@@ -16,11 +16,9 @@ public class Wallet {
     private ArrayList<Transaction> inputTransactions = new ArrayList<Transaction>(); // transacciones que tienen como destino esta dirección pública
     private ArrayList<Transaction> outputTransactions = new ArrayList<Transaction>(); // son las transacciones que tiene como origen esta dirección pública
 
-
     //Constructor
     public Wallet() {
     }
-
 
     //Metodos
     public void generateKeyPair() {
@@ -60,7 +58,6 @@ public class Wallet {
     public double getTotal_output(){
         return this.total_output;
     }
-   
 
     public double getBalance() {
         return this.balance;
@@ -99,12 +96,10 @@ public class Wallet {
 
     public void loadInputTransactions(BlockChain blockChain){
         setTotal_input(0);
-
         for (Transaction transaction : blockChain.getBlockChain()) {
             if (getAddress() == transaction.getpKey_recipient()) {
                 inputTransactions.add(transaction);
                 total_input+=transaction.getPigcoins();
-
             }
         }
         setBalance(getTotal_input()-getTotal_output());
