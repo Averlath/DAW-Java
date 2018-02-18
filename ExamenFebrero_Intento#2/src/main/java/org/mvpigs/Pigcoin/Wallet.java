@@ -47,7 +47,7 @@ public class Wallet {
         this.total_input = total_input;
     }
 
-    public double getTotal_output(){
+    public double getTotal_output() {
         return this.total_output;
     }
 
@@ -55,7 +55,7 @@ public class Wallet {
         this.total_output = total_output;
     }
 
-    public double getTotal_input(){
+    public double getTotal_input() {
         return this.total_input;
     }
 

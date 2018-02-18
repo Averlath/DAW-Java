@@ -1,9 +1,10 @@
 package org.mvpigs.Pigcoin;
 
 import java.util.ArrayList;
+import java.security.PublicKey;
 
 public class BlockChain {
-    private ArrayList<Transaction> blockChain = new ArrayList<Transaction>(); // lo componen las transacciones de pigcoins que han realizado los propietarios de las wallets
+    ArrayList<Transaction> blockChain = new ArrayList<Transaction>(); // lo componen las transacciones de pigcoins que han realizado los propietarios de las wallets
 
     // Constructor
     public BlockChain() {
@@ -20,11 +21,11 @@ public class BlockChain {
         }
     }
 
-    public void summarize(int posicion) {
-        System.out.println(blockChain.get(posicion));
+    public void summarize(int position) {
+        System.out.println(blockChain.get(position));
     }
 
     public void addOrigin(Transaction transaction) {
-        System.out.println(transaction);
+        blockChain.add(transaction);
     }
 }
