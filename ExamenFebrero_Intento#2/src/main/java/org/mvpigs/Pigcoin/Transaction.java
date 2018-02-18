@@ -30,4 +30,36 @@ public class Transaction {
         String transactions = "\nhash = " + hash + "\nprev_hash = " + prev_hash + "\nnKey_sender = " + pKey_sender.hashCode() + "\nnKey_recipient = " + pKey_recipient.hashCode() + "\npigcoins = " + pigcoins + "\nmessage = " + message;
         return transactions;
     }
+
+    public void setpKey_sender(PublicKey pKey_sender) {
+        this.pKey_sender = pKey_sender;
+    }
+
+    public PublicKey getpKey_sender() {
+        return pKey_sender;
+    }
+
+    public void setpKey_recipient(PublicKey pKey_recipient) {
+        this.pKey_recipient = pKey_recipient;
+    }
+
+    public PublicKey getpKey_recipient() {
+        return pKey_recipient;
+    }
+
+    public void setPigcoins(double pigcoins) {
+        this.pigcoins = pigcoins;
+    }
+
+    public double getPigcoins() {
+        return pigcoins;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public String getHash() {
+        return hash;
+    }
 }
