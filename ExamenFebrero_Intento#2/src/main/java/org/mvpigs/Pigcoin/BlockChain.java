@@ -1,6 +1,7 @@
 package org.mvpigs.Pigcoin;
 
 import org.mvpigs.Pigcoin.Transaction;
+import org.mvpigs.Pigcoin.Wallet;
 
 import java.util.ArrayList;
 import java.security.PublicKey;
