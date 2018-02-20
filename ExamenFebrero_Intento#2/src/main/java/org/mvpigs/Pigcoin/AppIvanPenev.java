@@ -1,9 +1,11 @@
 package org.mvpigs.Pigcoin;
 
+import org.mvpigs.Pigcoin.BlockChain;
+import org.mvpigs.Pigcoin.Transaction;
+import org.mvpigs.Pigcoin.Wallet;
+
 import java.security.KeyPair;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 
 public class AppIvanPenev {
 

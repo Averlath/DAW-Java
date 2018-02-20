@@ -1,8 +1,9 @@
 package org.mvpigs.Pigcoin;
 
+import org.mvpigs.Pigcoin.Transaction;
+
 import java.util.ArrayList;
 import java.security.PublicKey;
-import java.util.HashMap;
 import java.util.Map;
 
 public class BlockChain {

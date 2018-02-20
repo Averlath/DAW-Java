@@ -1,5 +1,9 @@
 package org.mvpigs.Pigcoin;
 
+import org.mvpigs.Pigcoin.GenSig;
+import org.mvpigs.Pigcoin.Transaction;
+import org.mvpigs.Pigcoin.BlockChain;
+
 import java.security.PublicKey;
 import java.security.PrivateKey;
 import java.security.KeyPair;
