@@ -13,8 +13,8 @@ public class Wallet {
     private double total_input = 0; // coins de pigcoins que han sido recibidos
     private double total_output = 0; // coins de pigcoins que se han enviado
     private double balance = 0; // pigcoins que "posee" este usuario
-    private ArrayList<Transaction> inputTransactions = new ArrayList<Transaction>(); // transacciones que tienen como destino esta dirección pública
-    private ArrayList<Transaction> outputTransactions = new ArrayList<Transaction>(); // son las transacciones que tiene como origen esta dirección pública
+    private ArrayList<Transaction> inputTransactions = new ArrayList<Transaction>(); // transactiones que tienen como destino esta dirección pública
+    private ArrayList<Transaction> outputTransactions = new ArrayList<Transaction>(); // son las transactiones que tiene como origen esta dirección pública
 
     //Constructor
     public Wallet() {
@@ -59,11 +59,15 @@ public class Wallet {
         return this.total_output;
     }
 
+    public void setBalance() {
+        double balance = getTotal_input() - getTotal_output();
+        if (balance >= 0) {
+            this.balance = balance;
+        }
+    }
+
     public double getBalance() {
         return this.balance;
-    }
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public String toString() {
@@ -79,44 +83,44 @@ public class Wallet {
         return outputTransactions;
     }
 
-    public void Xactions(int sender, int recipient, double coins) {
-        if (sender == this.address.hashCode()){
-            this.setBalance(this.balance - coins);
-        }
-        else if (recipient == this.address.hashCode()) {
-            this.setBalance(this.balance + coins);
-        }
-    }
-
     public void loadCoins(BlockChain blockChain) {
+        double totalIn = 0.0d;
+        double totalOut = 0.0d;
         for (Transaction transaction : blockChain.getBlockChain()) {
-            Xactions(transaction.getpKey_sender().hashCode(), transaction.getpKey_recipient().hashCode(), transaction.getPigcoins());
+            if (transaction.getpKey_sender().equals(transaction.getpKey_recipient())
+                    && transaction.getpKey_sender().equals(getAddress())) {
+                totalIn += transaction.getPigcoins();
+                totalOut += transaction.getPigcoins();
+            } else if (transaction.getpKey_recipient().equals(getAddress())) {
+                totalIn += transaction.getPigcoins();
+            } else if (transaction.getpKey_sender().equals(getAddress())) {
+                totalOut += transaction.getPigcoins();
+        }
+        setTotal_output(totalOut);
+        setTotal_input(totalIn);
+        setBalance();
         }
     }
 
-    public void loadInputTransactions(BlockChain blockChain){
+    public void loadInputTransactions(BlockChain blockChain) {
         setTotal_input(0);
         for (Transaction transaction : blockChain.getBlockChain()) {
             if (getAddress() == transaction.getpKey_recipient()) {
                 inputTransactions.add(transaction);
-                total_input+=transaction.getPigcoins();
             }
         }
-        setBalance(getTotal_input()-getTotal_output());
     }
 
-    public void loadOutputTransactions(BlockChain blockChain){
+    public void loadOutputTransactions(BlockChain blockChain) {
         setTotal_output(0);
         for (Transaction transaction : blockChain.getBlockChain()) {
             if (getAddress() == transaction .getpKey_sender()) {
-                outputTransactions.add(transaction );
-                setTotal_output(transaction .getPigcoins());
+                outputTransactions.add(transaction);
             }
         }
-        setBalance(getTotal_input()-getTotal_output());
     }
 
-    public Map collectCoins(double pigcoins){
+    public Map collectCoins(double pigcoins) {
         Map<String, Double> usedCoins = new HashMap<String, Double>();
         for (Transaction transaction : outputTransactions) {
             usedCoins.put(transaction.getHash(), transaction.getPigcoins());
@@ -125,5 +129,15 @@ public class Wallet {
             usedCoins.put(transaction.getHash(), transaction.getPigcoins());
         }
         return usedCoins;
+    }
+
+    public byte[] signTransaction(String message) {
+        return GenSig.sign(getSKey(), message);
+    }
+
+    public void sendCoins(PublicKey address, double pigcoins, String message, BlockChain bChain) {
+        Map<String, Double> consumedCoins = collectCoins(pigcoins);
+        byte[] messageSignature = signTransaction(message);
+        bChain.processTransactions(getAddress(), address, consumedCoins, message, messageSignature);
     }
 }
