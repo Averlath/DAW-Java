@@ -102,20 +102,22 @@ public class Wallet {
         }
     }
 
-    public void loadInputTransactions(BlockChain blockChain) {
+    public void loadInputTransactions(BlockChain blockChain){
         setTotal_input(0);
         for (Transaction transaction : blockChain.getBlockChain()) {
             if (getAddress() == transaction.getpKey_recipient()) {
                 inputTransactions.add(transaction);
+                total_input+=transaction.getPigcoins();
             }
         }
     }
 
-    public void loadOutputTransactions(BlockChain blockChain) {
+    public void loadOutputTransactions(BlockChain blockChain){
         setTotal_output(0);
         for (Transaction transaction : blockChain.getBlockChain()) {
-            if (getAddress() == transaction .getpKey_sender()) {
+            if (getAddress() == transaction.getpKey_sender()) {
                 outputTransactions.add(transaction);
+                setTotal_output(transaction.getPigcoins());
             }
         }
     }
