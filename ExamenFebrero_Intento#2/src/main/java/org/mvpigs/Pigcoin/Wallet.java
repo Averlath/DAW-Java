@@ -9,7 +9,6 @@ import java.security.PrivateKey;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 
 public class Wallet {
     private PublicKey address = null; //  dirección pública o clave pública de la wallet
