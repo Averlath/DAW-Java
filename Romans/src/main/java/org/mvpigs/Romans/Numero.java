@@ -1,5 +1,7 @@
 package org.mvpigs.Romans;
 
+import org.mvpigs.Romans.Romans;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -36,10 +38,23 @@ public class Numero {
 		return this.regexDiccionario;
 	}
 
-    public short toDecimal() {
-		for(String regex : getRegexDiccionario().getValues()) {
+    public int toDecimal() {
+		for (String regex : getRegexDiccionario().getValues()) {
 			Matcher matcher = createMatcher(regex);
 			groupSumatoryToDecimal(matcher);
 		}		
-		return getNumeroDecimal();
+        return getNumeroDecimal();
+    }
+
+    private Matcher createMatcher(String regex) {
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(this.numeroRomano);
+		return matcher;
+	}
+
+	private void groupSumatoryToDecimal(Matcher matcher) {
+		while (matcher.find()) {
+				this.numeroDecimal += valorDecimal(matcher.group());
+		}
+	}
 }
