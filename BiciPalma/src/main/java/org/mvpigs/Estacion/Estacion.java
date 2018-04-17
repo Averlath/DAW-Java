@@ -71,8 +71,11 @@ public class Estacion {
         
         for (org.mvpigs.Bicicleta.Bicicleta anclaje : this.anclajes) {
             if (anclaje == null) {
-                this.anclajes[posicion] = bicicleta;
+                this.anclajes[0] = bicicleta;
                 mostrarAnclaje(bicicleta, numeroAnclaje);
+            } else {
+                posicion++;
+                numeroAnclaje++;
             }
         }
     }
