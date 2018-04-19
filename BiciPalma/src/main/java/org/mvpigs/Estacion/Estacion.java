@@ -15,7 +15,7 @@ public class Estacion {
         this.id = id;
         this.direccion = direccion;
         this.numeroAnclajes = anclajes;
-        this.anclajes = new org.mvpigs.Bicicleta.Bicicleta[anclajes];
+        this.anclajes = new Bicicleta[anclajes];
     }
 
     public int getId() {
@@ -71,11 +71,8 @@ public class Estacion {
         
         for (org.mvpigs.Bicicleta.Bicicleta anclaje : this.anclajes) {
             if (anclaje == null) {
-                this.anclajes[0] = bicicleta;
+                this.anclajes[posicion] = bicicleta;
                 mostrarAnclaje(bicicleta, numeroAnclaje);
-            } else {
-                posicion++;
-                numeroAnclaje++;
             }
         }
     }
