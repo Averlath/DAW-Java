@@ -1,0 +1,22 @@
+{
+    "run": [
+        {
+            "name": "Factory Method",
+            "projectName": "Factory Method",
+            "workingDirectory": "c:\\Users\\Ivan\\Desktop\\DAW-Java\\Patterns\\Factory Pattern",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ],
+    "debug": [
+        {
+            "name": "Factory Method",
+            "projectName": "Factory Method",
+            "workingDirectory": "c:\\Users\\Ivan\\Desktop\\DAW-Java\\Patterns\\Factory Pattern",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ]
+}
