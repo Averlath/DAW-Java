@@ -1,4 +1,4 @@
-package org.mvpigs;
+package org.mvpigs.commandpattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
