@@ -18,7 +18,7 @@ public class Carrera {
 	 * para trabajar con Spring JPA
 	 */
 
-	public Carrera(String tarjetaCredito){
+	public Carrera(String tarjetaCredito) {
 		this.tarjetaCredito = tarjetaCredito;
 	}
 	
@@ -30,35 +30,35 @@ public class Carrera {
 		return this.id;
 	}
 
-	public String getTarjetaCredito(){
+	public String getTarjetaCredito() {
 		return this.tarjetaCredito;
 	}
 	
-	public void setOrigen(String origen){
+	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
 	
-	public String getOrigen(){
+	public String getOrigen() {
 		return this.origen;
 	}
 	
-	public void setDestino(String destino){
+	public void setDestino(String destino) {
 		this.destino = destino;
 	}
 	
-	public String getDestino(){
+	public String getDestino() {
 		return this.destino;
 	}
 	
-	public void setDistancia(double distancia){
+	public void setDistancia(double distancia) {
 		this.distancia = distancia;
 	}
 	
-	public double getDistancia(){
+	public double getDistancia() {
 		return this.distancia;
 	}
 	
-	public double getCosteEsperado(){
+	public double getCosteEsperado() {
 		return Tarifa.getCosteTotalEsperado(this);
 	}
 
@@ -78,11 +78,11 @@ public class Carrera {
 		this.tiempoCarrera = tiempoCarrera;
 	}
 	
-	public void setConductor(Conductor conductor){
+	public void setConductor(Conductor conductor) {
 		this.conductor = conductor;
 	}
 	
-	public Conductor getConductor(){
+	public Conductor getConductor() {
 		return this.conductor;
 	}
 
@@ -90,32 +90,31 @@ public class Carrera {
 	 * Lógica de la clase
 	 */
 	
-	
-	public void asignarConductor(PoolConductores conductores){
+	public void asignarConductor(PoolConductores conductores) {
 		setConductor(conductores.asignarConductor());
 	}
 	
-	public void realizarPago(double pago){
+	public void realizarPago(double pago) {
 		this.costeTotal = pago;
 	}
 	
-	public double getCosteTotal(){
+	public double getCosteTotal() {
 		return this.costeTotal;
 	}
 
-	public void setCosteTotal(double pago){
+	public void setCosteTotal(double pago) {
 		this.costeTotal = pago;
 	}
 	
-	public void recibirPropina(int propina){
+	public void recibirPropina(int propina) {
 		this.propina = propina;
 	}
 	
-	public int getPropina(){
+	public int getPropina() {
 		return this.propina;
 	}
 	
-	public void liberarConductor(){
+	public void liberarConductor() {
 		getConductor().setOcupado(false);
 	}
 }

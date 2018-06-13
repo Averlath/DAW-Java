@@ -7,7 +7,6 @@ import org.mvpigs.cotxox.domain.Carrera;
 import org.mvpigs.cotxox.domain.Tarifa;
 
 public class TarifaTest {
-	
 	Carrera carrera = new Carrera("4929637175949220");
 
 	@Test
@@ -19,9 +18,8 @@ public class TarifaTest {
 		assertEquals(esperado, Tarifa.getCosteDistancia(distancia), delta);		
 	}
 	
-	
 	@Test
-	public void getCosteTiempo(){
+	public void getCosteTiempo() {
 		int minutos = 10;
 		double costeTiempoEsperado = 3.5;
 		double delta = 0.01;
@@ -29,7 +27,7 @@ public class TarifaTest {
 	}
 	
 	@Test
-	public void getCosteTotalEsperado(){
+	public void getCosteTotalEsperado() {
 		carrera.setDistancia(7.75);
 		carrera.setTiempoEsperado(10);
 		double costeTotal = 7.75*1.35 + 0.35*10;

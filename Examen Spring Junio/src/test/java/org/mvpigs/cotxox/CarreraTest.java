@@ -11,11 +11,10 @@ import org.mvpigs.cotxox.domain.Conductor;
 import org.mvpigs.cotxox.domain.PoolConductores;
 
 public class CarreraTest {
-	
 	Carrera carrera;
 
 	@Before
-	public void ConstructorTest(){
+	public void ConstructorTest() {
 		
 		// http://ensaimeitor.apsl.net/gen_visa/10/
 		
@@ -26,7 +25,7 @@ public class CarreraTest {
 								"4916119711304546"
 								};
 		
-		for(String tarjetaVisa : tarjetasVisa){
+		for (String tarjetaVisa : tarjetasVisa) {
 			carrera = new Carrera(tarjetaVisa);
 			assertEquals(tarjetaVisa, carrera.getTarjetaCredito());
 		}		
@@ -81,7 +80,7 @@ public class CarreraTest {
 	}
 	
 	@Test
-	public void setTiempoCarreraTest(){
+	public void setTiempoCarreraTest() {
 		int minutos = 10;
 		double delta = 0;
 		carrera.setTiempoCarrera(minutos);
@@ -89,7 +88,7 @@ public class CarreraTest {
 	}
 	
 	@Test
-	public void setConductorTest(){
+	public void setConductorTest() {
 		String nombre = "Samantha";
 		Conductor conductor = new Conductor();
 		conductor.setNombre(nombre);
@@ -98,7 +97,7 @@ public class CarreraTest {
 	}
 	
 	@Test
-	public void asignarConductor(){
+	public void asignarConductor() {
 		carrera.setConductor(null);
 		String nombre = "Samantha";
 		Conductor conductor = new Conductor(nombre);
@@ -110,14 +109,14 @@ public class CarreraTest {
 	}
 	
 	@Test
-	public void realizarPagoTest(){
+	public void realizarPagoTest() {
 		double delta = 0d;
 		carrera.realizarPago(carrera.getCosteEsperado());
 		assertEquals(carrera.getCosteEsperado(), carrera.getCosteTotal() , delta);
 	}
 	
 	@Test
-	public void liberarConductor(){
+	public void liberarConductor() {
 		Conductor conductor = new Conductor("Samantha");
 		carrera.setConductor(conductor);
 		carrera.liberarConductor();
@@ -125,13 +124,10 @@ public class CarreraTest {
 	}
 	
 	@Test
-	public void setValoracion(){
+	public void setValoracion() {
 		Conductor conductor = new Conductor("Samantha");
 		carrera.setConductor(conductor);
 		carrera.getConductor().setValoracion((byte) 5);
 		assertEquals(5, carrera.getConductor().getValoracion() , 0);
 	}
-	
-	
-
 }

@@ -13,7 +13,7 @@ public class PoolConductores {
 
 	public PoolConductores() {};
 	
-	public PoolConductores(ArrayList<Conductor> poolConductores){
+	public PoolConductores(ArrayList<Conductor> poolConductores) {
 		this.poolConductores = poolConductores;
 	}
 
@@ -21,7 +21,7 @@ public class PoolConductores {
 	 * Getters y setter
 	 */
 	
-	public ArrayList<Conductor> getPoolConductores(){
+	public ArrayList<Conductor> getPoolConductores() {
 		return this.poolConductores;
 	}
 	
@@ -29,19 +29,18 @@ public class PoolConductores {
 	 * Lógica de la clase
 	 */
 
-	public Conductor asignarConductor(){
+	public Conductor asignarConductor() {
 		Conductor conductor = new Conductor();
 		Random aleatorio = new Random();
 		boolean asignado = false;
-		while(!asignado){
+		while (!asignado) {
 			int index = aleatorio.nextInt(getPoolConductores().size());
 			conductor = getPoolConductores().get(index);
-			if(!conductor.isOcupado()){
+			if (!conductor.isOcupado()) {
 				conductor.setOcupado(true);
 				asignado = true;
 			}
 		}
 		return conductor;
 	}
-	
 }

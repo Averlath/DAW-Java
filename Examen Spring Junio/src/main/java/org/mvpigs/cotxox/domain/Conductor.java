@@ -20,7 +20,7 @@ public class Conductor {
 	 * para trabajar con Spring JPA
 	 */
 		
-	public Conductor(String tarjetaCredito){
+	public Conductor(String tarjetaCredito) {
 		this.tarjeta = tarjetaCredito;
 	}
 		
@@ -56,7 +56,7 @@ public class Conductor {
 		return this.valoracionMedia;
 	}
 	
-	public int getNumeroValoraciones(){
+	public int getNumeroValoraciones() {
 		return this.valoraciones.size();
 	}
 
@@ -69,21 +69,20 @@ public class Conductor {
 	 * Lógica de la clase
 	 */
 
-	private double calcularValoracionMedia(){
+	private double calcularValoracionMedia() {
 		int sumaValoraciones = 0;
-		for(byte valoracion : this.valoraciones){
+		for (byte valoracion : this.valoraciones) {
 			sumaValoraciones += valoracion;
 		}
 		this.valoracionMedia = (double) sumaValoraciones / this.valoraciones.size();
 		return this.valoracionMedia;
 	}
 	
-	public void setOcupado(Boolean ocupado){
+	public void setOcupado(Boolean ocupado) {
 		this.ocupado = ocupado;
 	}
 	
-	public boolean isOcupado(){
+	public boolean isOcupado() {
 		return this.ocupado;
 	}
-
 }

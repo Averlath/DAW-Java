@@ -55,10 +55,6 @@ public class CotxoxApplicationTests {
 	private EntityManager em;
 
 	/** 
-	 * TDD 
-	 */
-
-	/** 
 	 * Mapea la classe conductor per a reflecteixi 
 	 * l'esquema de la base de dades 
 	 */
@@ -254,7 +250,6 @@ public class CotxoxApplicationTests {
 		carreraService.updateCarrera(carrera);
 		Assert.assertEquals("Samantha", carreraService.recuperaCarrera(idCarrera).getConductor().getNombre());
 	}
-
 	/**
 	 * A completar:
 	 *  - Introducció de la valoració que l'usuari/a fa del conductor/a al termini de la carrera.

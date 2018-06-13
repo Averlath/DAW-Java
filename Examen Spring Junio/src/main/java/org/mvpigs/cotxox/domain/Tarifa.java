@@ -7,18 +7,16 @@ public class Tarifa {
 	final static double costeMinimo = 5.0;
 	final static byte porcentajeComision = 20;
 	
-	public static double getCosteDistancia(double distancia){
+	public static double getCosteDistancia(double distancia) {
 		return distancia * costeMilla;
 	}
 	
-	public static double getCosteTiempo(int minutos){
+	public static double getCosteTiempo(int minutos) {
 		return minutos * costeMinuto;
 	}
 	
-	public static double getCosteTotalEsperado(Carrera carrera){
+	public static double getCosteTotalEsperado(Carrera carrera) {
 		double costeTotal = getCosteDistancia(carrera.getDistancia()) + getCosteTiempo(carrera.getTiempoEsperado());
 		return costeTotal > costeMinimo? costeTotal:costeMinimo;
 	}
-	
-
 }
