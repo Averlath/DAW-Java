@@ -6,3 +6,13 @@ public class LavadoraCargaSuperior extends Lavadora {
     	    this.tipoCarga = "superior";
     }
 }
+
+/*
+public class LavadoraCargaSuperiorFactoria extends ?? {
+    @Override
+    public Lavadora creaLavadoraTipo() {
+        return newLavadoraSuperior;
+    }
+}
+
+*/
